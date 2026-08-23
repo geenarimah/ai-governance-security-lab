@@ -1,0 +1,135 @@
+
+=======================================================
+CONTROL ASSESSMENT
+=======================================================
+
+CONTROL ID:
+AI-AUTH-001
+
+CONTROL NAME:
+Authentication and Session Assurance Before AI Access
+
+CONTROL TYPE:
+Preventive / Technical
+
+RISK ADDRESSED:
+AI-RISK-005 - Authentication or Session Compromise Leading to Unauthorized AI Access
+
+CONTROL OBJECTIVE:
+Ensure that AI access is granted only through a valid,
+trusted, active, authenticated session that is correctly
+bound to the requesting user identity.
+
+IMPLEMENTATION:
+The application validates the supplied session ID against
+a trusted server-side session store before granting AI access.
+
+The control verifies:
+
+1. A session ID is present.
+2. The session exists in the trusted session store.
+3. The session is authenticated.
+4. The session is active.
+5. The supplied user identity matches the trusted identity
+   associated with the session.
+6. The requested user identity matches the authenticated
+   session identity.
+
+Client-supplied authentication flags are not trusted as
+proof of authentication.
+
+-------------------------------------------------------
+TEST EVIDENCE
+-------------------------------------------------------
+
+Insecure Baseline:
+evidence/insecure_auth_session_test.txt
+
+Secure Evidence:
+evidence/secure_auth_session_test.txt
+
+Insecure Test Result:
+1 Passed / 3 Failed / 0 Errors
+
+Secure Test Result:
+4 Passed / 0 Failed / 0 Errors
+
+TESTED SCENARIOS:
+
+1. Valid Alice Session
+   Result: ALLOWED
+
+2. Session User Switched to Kwame
+   Result: DENIED
+
+3. Forged Authenticated Session
+   Result: DENIED
+
+4. Missing Session Identity Binding
+   Result: DENIED
+
+-------------------------------------------------------
+CONTROL EFFECTIVENESS
+-------------------------------------------------------
+
+EFFECTIVE FOR TESTED SCENARIOS
+
+The secure implementation validated trusted session state
+and enforced identity binding before AI access.
+
+The tested forged, switched-user, and missing-identity
+scenarios were denied while the valid session was allowed.
+
+-------------------------------------------------------
+LIMITATIONS
+-------------------------------------------------------
+
+1. The session store is simulated and held in application
+   memory for this lab.
+
+2. Password authentication itself is not implemented or tested.
+
+3. MFA is not implemented.
+
+4. Session expiration, idle timeout, logout, and token
+   revocation have not been tested.
+
+5. Session-token confidentiality and transport protection
+   are outside the current test scope.
+
+6. Session fixation, replay, token theft, and concurrent
+   session abuse have not been tested.
+
+7. Production identity federation, IAM integration, and
+   credential lifecycle controls remain incomplete.
+
+8. The control does not replace downstream authorization
+   checks such as AI-ACCESS-001.
+
+-------------------------------------------------------
+RESIDUAL RISK
+-------------------------------------------------------
+
+Residual risk remains because the tested control validates
+session existence and identity binding but does not implement
+the full authentication and session-management lifecycle.
+
+Production deployment would require stronger authentication,
+session expiration and revocation, MFA where appropriate,
+secure token handling, monitoring, and integration with
+production IAM services.
+
+-------------------------------------------------------
+ASSESSOR CONCLUSION
+-------------------------------------------------------
+
+AI-AUTH-001 is EFFECTIVE FOR TESTED SCENARIOS.
+
+The test evidence demonstrates that the application rejected
+the tested forged, identity-mismatched, and incomplete session
+conditions while allowing the defined valid authenticated
+session.
+
+This assessment does not constitute production approval.
+
+=======================================================

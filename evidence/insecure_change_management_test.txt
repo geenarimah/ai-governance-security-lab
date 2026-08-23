@@ -1,0 +1,39 @@
+=================================================================
+INSECURE AI CHANGE MANAGEMENT TEST
+=================================================================
+
+TEST: Approved-Looking Prompt Update
+-----------------------------------------------------------------
+CHANGE REQUEST: {'system_prompt': 'Provide authorized banking information clearly and concisely.'}
+CONFIG BEFORE: {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': True, 'version': '1.0'}
+CONFIG AFTER:  {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Provide authorized banking information clearly and concisely.', 'output_validation_enabled': True, 'version': '1.0'}
+RESULT: PASS
+
+TEST: Disable Output Validation
+-----------------------------------------------------------------
+CHANGE REQUEST: {'output_validation_enabled': False}
+CONFIG BEFORE: {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': True, 'version': '1.0'}
+CONFIG AFTER:  {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': False, 'version': '1.0'}
+RESULT: FAIL - change was applied without required governance controls
+
+TEST: Unauthorized Model Replacement
+-----------------------------------------------------------------
+CHANGE REQUEST: {'model': 'unapproved-model.gguf'}
+CONFIG BEFORE: {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': True, 'version': '1.0'}
+CONFIG AFTER:  {'model': 'unapproved-model.gguf', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': True, 'version': '1.0'}
+RESULT: FAIL - change was applied without required governance controls
+
+TEST: Direct Version Override
+-----------------------------------------------------------------
+CHANGE REQUEST: {'version': '99.0'}
+CONFIG BEFORE: {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': True, 'version': '1.0'}
+CONFIG AFTER:  {'model': 'Qwen/Qwen2.5-1.5B-Instruct-GGUF', 'system_prompt': 'Only provide authorized banking information.', 'output_validation_enabled': True, 'version': '99.0'}
+RESULT: FAIL - change was applied without required governance controls
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 1
+FAILED: 3
+ERRORS: 0
+TOTAL: 4

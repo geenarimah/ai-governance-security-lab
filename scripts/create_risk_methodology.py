@@ -1,0 +1,121 @@
+from datetime import datetime
+
+methodology = f"""
+====================================================
+ AI GOVERNANCE RISK SCORING METHODOLOGY
+====================================================
+
+Created: {datetime.now()}
+
+PURPOSE
+This methodology defines how AI risks in this lab are scored
+so that risk ratings are consistent, explainable, and repeatable.
+
+RISK FORMULA
+Risk Score = Likelihood x Impact
+
+Scores range from 1 to 25.
+
+----------------------------------------------------
+LIKELIHOOD SCALE
+----------------------------------------------------
+
+1 - Rare
+The scenario is highly unlikely and there is no known
+evidence that it has occurred in the tested environment.
+
+2 - Unlikely
+The scenario is possible, but current controls make
+successful exploitation difficult.
+
+3 - Possible
+The scenario is credible and could occur under certain
+conditions.
+
+4 - Likely
+The scenario has been demonstrated, observed, or is
+reasonably expected to occur without adequate controls.
+
+5 - Almost Certain
+The scenario is easily reproducible, frequent, or expected
+to occur repeatedly without intervention.
+
+----------------------------------------------------
+IMPACT SCALE
+----------------------------------------------------
+
+1 - Insignificant
+Negligible security, privacy, operational, financial,
+or compliance consequence.
+
+2 - Minor
+Limited impact with low business disruption and limited
+information exposure.
+
+3 - Moderate
+Material operational, privacy, compliance, or customer
+impact requiring management attention.
+
+4 - Major
+Significant financial, regulatory, security, operational,
+or reputational impact.
+
+5 - Severe
+Critical data exposure, fraud risk, major regulatory
+consequences, significant customer harm, or major
+organizational impact.
+
+----------------------------------------------------
+RISK RATING THRESHOLDS
+----------------------------------------------------
+
+1 - 4   = LOW
+5 - 9   = MEDIUM
+10 - 16 = HIGH
+17 - 25 = CRITICAL
+
+----------------------------------------------------
+INHERENT RISK
+----------------------------------------------------
+
+Inherent risk represents the level of risk before the
+effect of implemented controls is considered.
+
+----------------------------------------------------
+RESIDUAL RISK
+----------------------------------------------------
+
+Residual risk represents the remaining risk after
+implemented controls and available test evidence are
+considered.
+
+Residual risk does not mean the risk has disappeared.
+
+----------------------------------------------------
+SCORING REQUIREMENTS
+----------------------------------------------------
+
+Each likelihood and impact score should be supported by:
+
+- threat scenario
+- technical or operational evidence
+- control implementation
+- test results
+- assumptions
+- known limitations
+
+Risk scores must not be treated as objective facts.
+They are structured assessment judgments supported by
+available evidence.
+
+====================================================
+"""
+
+print(methodology)
+
+filename = "evidence/AI_Risk_Scoring_Methodology.txt"
+
+with open(filename, "w") as file:
+    file.write(methodology)
+
+print(f"Methodology saved to: {filename}")

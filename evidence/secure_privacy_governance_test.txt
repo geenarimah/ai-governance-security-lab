@@ -1,0 +1,47 @@
+=================================================================
+SECURE AI PRIVACY AND DATA GOVERNANCE TEST
+=================================================================
+
+DATA CLASSIFICATION:
+name: Personal
+account_type: Internal
+balance: Financial
+date_of_birth: Personal
+phone_number: Personal
+home_address: Personal
+national_id: Restricted
+
+TEST: Balance Inquiry
+-----------------------------------------------------------------
+PURPOSE: balance_inquiry
+PRIVACY CHECKED: True
+ALLOWED: True
+DATA SENT: {'name': 'Alice Mensah', 'balance': 'GHS 12,500'}
+REASON: Purpose limitation and data minimization enforced
+RESULT: PASS
+
+TEST: Account Type Inquiry
+-----------------------------------------------------------------
+PURPOSE: account_type_inquiry
+PRIVACY CHECKED: True
+ALLOWED: True
+DATA SENT: {'name': 'Alice Mensah', 'account_type': 'Savings'}
+REASON: Purpose limitation and data minimization enforced
+RESULT: PASS
+
+TEST: Unapproved Purpose
+-----------------------------------------------------------------
+PURPOSE: marketing_profile
+PRIVACY CHECKED: True
+ALLOWED: False
+DATA SENT: {}
+REASON: Purpose is not approved
+RESULT: PASS
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 3
+FAILED: 0
+ERRORS: 0
+TOTAL: 3

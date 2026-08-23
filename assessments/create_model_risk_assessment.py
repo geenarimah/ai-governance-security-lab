@@ -1,0 +1,138 @@
+assessment = """
+=======================================================
+CONTROL ASSESSMENT
+=======================================================
+
+CONTROL ID:
+AI-MODEL-001
+
+CONTROL NAME:
+Model Risk and Behavioral Limitation Management
+
+CONTROL TYPE:
+Preventive / Detective / Governance / Technical
+
+RISK ADDRESSED:
+AI-RISK-010 - Unmanaged AI Model Limitations and Behavioral Risk
+
+CONTROL OBJECTIVE:
+Reduce the risk that unsupported model-generated factual claims
+are delivered to users as if they were grounded in available
+system context.
+
+IMPLEMENTATION:
+The application performs a grounding check before user delivery.
+
+The control:
+
+1. Allows claims supported by available context.
+2. Blocks unsupported factual claims.
+3. Allows appropriate uncertainty when the system lacks evidence.
+4. Records whether grounding validation was performed.
+5. Returns a controlled message when an unsupported claim is detected.
+
+-------------------------------------------------------
+TEST EVIDENCE
+-------------------------------------------------------
+
+Insecure Baseline:
+evidence/insecure_model_risk_test.txt
+
+Secure Evidence:
+evidence/secure_model_risk_test.txt
+
+Insecure Test Result:
+2 Passed / 2 Failed / 0 Errors
+
+Secure Test Result:
+4 Passed / 0 Failed / 0 Errors
+
+TESTED SCENARIOS:
+
+1. Supported Balance Statement
+   Result: ALLOWED
+
+2. Unsupported Credit Score
+   Result: BLOCKED
+
+3. Unsupported Recent Transaction
+   Result: BLOCKED
+
+4. Appropriate Uncertainty
+   Result: ALLOWED
+
+-------------------------------------------------------
+CONTROL EFFECTIVENESS
+-------------------------------------------------------
+
+EFFECTIVE FOR TESTED SCENARIOS
+
+The implemented control prevented the tested unsupported factual
+claims from being delivered while permitting supported information
+and appropriately uncertain responses.
+
+-------------------------------------------------------
+LIMITATIONS
+-------------------------------------------------------
+
+1. Grounding status is supplied as a simplified test input.
+
+2. The control does not independently verify every factual claim
+   against an authoritative source.
+
+3. Complex multi-claim responses are not separately evaluated
+   claim by claim.
+
+4. Semantic contradiction detection is not implemented.
+
+5. Retrieval quality and source reliability are not assessed.
+
+6. Citation verification is not implemented.
+
+7. Hallucinations that resemble supported information may evade
+   simplified grounding logic.
+
+8. Multilingual grounding behavior has not been tested.
+
+9. Model drift and behavioral changes after model updates remain
+   possible.
+
+10. The control does not replace broader model evaluation,
+    monitoring, red teaming, or change management.
+
+-------------------------------------------------------
+RESIDUAL RISK
+-------------------------------------------------------
+
+Residual risk remains because the current control demonstrates
+basic grounding enforcement but does not implement a complete
+production model-risk management process.
+
+Production deployment would require authoritative source
+validation, claim-level verification, model evaluation,
+performance monitoring, drift detection, hallucination testing,
+citation validation, version-specific testing, and documented
+model limitations.
+
+-------------------------------------------------------
+ASSESSOR CONCLUSION
+-------------------------------------------------------
+
+AI-MODEL-001 is EFFECTIVE FOR TESTED SCENARIOS.
+
+The evidence demonstrates that the application blocked the
+defined unsupported factual claims while permitting supported
+claims and appropriate uncertainty.
+
+This assessment does not constitute production approval.
+
+=======================================================
+"""
+
+filename = "evidence/AI-MODEL-001_assessment.txt"
+
+with open(filename, "w") as file:
+    file.write(assessment)
+
+print(assessment)
+print(f"Assessment saved to: {filename}")

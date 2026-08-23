@@ -1,0 +1,430 @@
+
+========================================================
+ AI USE-CASE RISK ASSESSMENT
+========================================================
+
+Assessment Date: 2026-08-22 11:04:03.874555
+
+SYSTEM ID:
+AI-SYS-001
+
+SYSTEM NAME:
+Internal Banking AI Assistant
+
+BUSINESS PURPOSE:
+Provide authenticated banking users with conversational
+access to authorized account information.
+
+MODEL:
+Qwen/Qwen2.5-1.5B-Instruct-GGUF
+
+DEPLOYMENT STATUS:
+Development / Testing
+
+PRODUCTION APPROVED:
+NO
+
+========================================================
+ GOVERNANCE SUMMARY
+========================================================
+
+The system has demonstrated effective controls for:
+
+1. Sensitive data minimization before LLM processing.
+2. User-level authorization before LLM processing.
+
+However, the current evidence is not sufficient to support
+production approval.
+
+Passing technical tests for two controls does not demonstrate
+that the complete AI system is adequately governed or secure.
+
+========================================================
+ ASSESSED RISKS AND CONTROLS
+========================================================
+
+RISK:
+AI-RISK-001 - Sensitive Data Disclosure Through LLM
+
+CONTROL:
+AI-DATA-001 - Sensitive Data Minimization Before LLM Processing
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+5 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH
+
+--------------------------------------------------------
+
+RISK:
+AI-RISK-002 - Unauthorized Cross-Customer Data Access
+
+CONTROL:
+AI-ACCESS-001 - User-Level Authorization Before LLM Processing
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+4 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH
+
+RISK:
+AI-RISK-003 - Insufficient AI Security Logging and Monitoring
+
+CONTROL:
+AI-LOG-001 - AI Security Logging and Monitoring
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+7 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+MEDIUM - 8/25
+
+RISK:
+AI-RISK-004 - Unsafe or Sensitive AI Output Delivery
+
+CONTROL:
+AI-OUTPUT-001 - AI Output Validation Before User Delivery
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+4 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-005 - Authentication or Session Compromise Leading to Unauthorized AI Access
+
+CONTROL:
+AI-AUTH-001 - Authentication and Session Assurance Before AI Access
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+4 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-006 - Uncontrolled AI Model or Configuration Change
+
+CONTROL:
+AI-CHANGE-001 - AI Model and Configuration Change Management
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+5 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-007 - Insufficient Human Oversight of Material AI Decisions
+
+CONTROL:
+AI-HUMAN-001 - Human Oversight and Escalation for Material AI Decisions
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+5 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-008 - Inadequate Response to AI Security Incidents
+
+CONTROL:
+AI-IR-001 - AI-Specific Incident Response and Evidence Preservation
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+3 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-009 - Cross-User Session or Context Leakage
+
+CONTROL:
+AI-SESSION-001 - Multi-User Session and Context Isolation
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+4 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-010 - Unmanaged AI Model Limitations and Behavioral Risk
+
+CONTROL:
+AI-MODEL-001 - Model Risk and Behavioral Limitation Management
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+4 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-011 - Unmanaged Third-Party AI and Software Supply-Chain Risk
+
+CONTROL:
+AI-SUPPLY-001 - AI Model and Software Supply-Chain Assurance
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+3 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+
+RISK:
+AI-RISK-012 - Inadequate Privacy and Data Governance for AI Processing
+
+CONTROL:
+AI-PRIV-001 - AI Privacy and Data Governance Enforcement
+
+CONTROL STATUS:
+Implemented and Tested
+
+TEST RESULT:
+3 Passed / 0 Failed / 0 Errors
+
+ASSESSMENT:
+Effective for tested scenarios.
+
+RESIDUAL RISK:
+HIGH - 10/25
+========================================================
+ CONTROL GAPS
+========================================================
+
+The following areas have not yet been adequately implemented
+or tested:
+
+1. Production Authentication and Session Lifecycle
+Trusted session validation and identity binding have been
+implemented and tested, but password authentication, MFA,
+session expiration, revocation, token protection, replay
+resistance, and production IAM integration remain incomplete.
+
+2. Centralized Monitoring and Alerting
+Structured security logging has been implemented and tested,
+but centralized aggregation, SIEM integration, alerting,
+escalation, retention, integrity protection, and correlation
+remain incomplete.
+
+3. Production Change Management Lifecycle
+Basic approval, model allowlisting, security-control protection,
+and controlled versioning have been implemented and tested,
+but formal approver workflows, separation of duties, regression
+testing gates, rollback, integrity verification, emergency
+change procedures, CI/CD controls, and auditable change history
+remain incomplete.
+
+4. Production Human Oversight and Escalation Lifecycle
+Basic material-action classification and human-approval gating
+have been implemented and tested, but reviewer authentication,
+separation of duties, approval evidence, multi-level workflows,
+approval expiration, emergency override, centralized logging,
+and review-quality assurance remain incomplete.
+
+5. Production AI Incident-Response Lifecycle
+Basic high-risk event handling, incident creation, containment,
+escalation, and evidence-preservation logic have been implemented
+and tested, but live containment integration, authenticated
+responders, immutable evidence storage, chain of custody,
+notification procedures, recovery testing, case management,
+incident metrics, and post-incident review remain incomplete.
+
+6. Production Session and Context Isolation Lifecycle
+Basic user-to-session binding and context isolation have been
+implemented and tested, but secure session generation,
+expiration, revocation, replay protection, distributed session
+handling, privilege-change controls, transport protection,
+and production IAM integration remain incomplete.
+
+7. Production Model-Risk Management Lifecycle
+Basic grounding enforcement for supported and unsupported factual
+claims has been implemented and tested, but authoritative source
+validation, claim-level verification, retrieval-quality assessment,
+citation validation, model-performance monitoring, drift detection,
+broader hallucination testing, multilingual evaluation, and
+documented model limitations remain incomplete.
+
+8. Production Third-Party and Supply-Chain Assurance Lifecycle
+Basic artifact approval, source validation, and SHA-256 integrity
+verification have been implemented and tested, but digital-signature
+verification, authenticated repositories, dependency and vulnerability
+analysis, SBOM controls, supplier due diligence, license review,
+provenance documentation, continuous upstream monitoring, and formal
+third-party risk management remain incomplete.
+
+9. Production Privacy and Data Governance Lifecycle
+Basic purpose limitation, field-level minimization, and data
+classification have been implemented and tested, but lawful
+processing review, retention and deletion controls, data lineage,
+data-subject rights handling, cross-border review, privacy impact
+assessment, records of processing, privacy monitoring, and
+production privacy-tool integration remain incomplete.
+
+========================================================
+ PRODUCTION READINESS DECISION
+========================================================
+
+DECISION:
+NOT APPROVED FOR PRODUCTION
+
+DECISION BASIS:
+The system has effective controls for the tested data
+minimization, authorization, security-event logging, and
+output-validation scenarios, but significant governance
+and security control areas remain untested or unimplemented.
+
+The residual risk therefore remains above the threshold
+required for production approval.
+
+========================================================
+ REQUIRED ACTIONS BEFORE REASSESSMENT
+========================================================
+1. Complete production authentication and session-lifecycle controls,
+   including MFA where appropriate, expiration, revocation, secure
+   token handling, replay protection, and IAM integration.
+2. Implement centralized monitoring, alerting, retention,
+   integrity protection, correlation, and SIEM integration.
+3. Complete the production AI change-management lifecycle,
+   including formal approvals, separation of duties, regression
+   testing gates, rollback, integrity verification, emergency
+   change procedures, CI/CD controls, and auditable change history.
+4. Complete the production human-oversight and escalation
+   lifecycle, including authenticated reviewers, separation
+   of duties, approval evidence, multi-level workflows,
+   approval expiration, emergency override, centralized
+   logging, and review-quality assurance.
+5. Complete the production AI incident-response lifecycle,
+   including live containment integration, authenticated
+   responders, immutable evidence preservation, chain of custody,
+   notification procedures, recovery testing, case management,
+   incident metrics, and post-incident review.
+6. Complete the production session and context-isolation
+   lifecycle, including secure session generation, expiration,
+   revocation, replay protection, distributed session handling,
+   privilege-change controls, transport protection, and
+   production IAM integration.
+7. Complete the production model-risk management lifecycle,
+   including authoritative source validation, claim-level
+   verification, retrieval-quality assessment, citation
+   validation, performance monitoring, drift detection,
+   broader hallucination testing, multilingual evaluation,
+   and documented model limitations.
+8. Complete the production third-party and supply-chain
+   assurance lifecycle, including digital-signature verification,
+   authenticated repositories, dependency and vulnerability
+   analysis, SBOM controls, supplier due diligence, license
+   review, provenance documentation, continuous upstream
+   monitoring, and formal third-party risk management.
+9. Complete the production privacy and data-governance lifecycle,
+   including lawful-processing review, retention and deletion
+   controls, data lineage, data-subject rights handling,
+   cross-border review, privacy impact assessment, records of
+   processing, ongoing privacy monitoring, and production
+   privacy-tool integration.
+
+========================================================
+ RESIDUAL RISK ACCEPTANCE
+========================================================
+
+Residual risk has NOT been accepted for production use.
+
+Any production deployment would require formal risk-owner
+approval after remediation and reassessment.
+
+========================================================
+ ASSESSOR CONCLUSION
+========================================================
+
+AI-SYS-001 demonstrates a sound initial control architecture
+for data minimization, user-level authorization,
+security-event logging, output validation,
+authentication/session assurance, AI model and
+configuration change management, human oversight,
+AI-specific incident response, multi-user session
+and context isolation, model-risk management,
+AI supply-chain assurance, and privacy and
+data-governance enforcement.
+
+Technical testing provides evidence that all twelve controls
+operated effectively across the defined scenarios.
+
+However, system-level governance maturity remains incomplete.
+
+The appropriate governance decision is to continue controlled
+development and testing while withholding production approval
+until the identified control gaps are addressed and validated.
+
+=======================================================

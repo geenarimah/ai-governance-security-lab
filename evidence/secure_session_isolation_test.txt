@@ -1,0 +1,51 @@
+=================================================================
+SECURE MULTI-USER SESSION ISOLATION TEST
+=================================================================
+
+TEST: Alice Initial Session
+-----------------------------------------------------------------
+SESSION ID: SESSION-ALICE-001
+AUTHENTICATED USER: alice
+REQUESTED USER: alice
+ALLOWED: True
+RESPONSE CONTEXT: {'name': 'Alice Mensah', 'balance': 'GHS 12,500'}
+REASON: Session and user context validated
+RESULT: PASS
+
+TEST: Kwame Separate Session
+-----------------------------------------------------------------
+SESSION ID: SESSION-KWAME-001
+AUTHENTICATED USER: kwame
+REQUESTED USER: kwame
+ALLOWED: True
+RESPONSE CONTEXT: {'name': 'Kwame Asante', 'balance': 'GHS 47,800'}
+REASON: Session and user context validated
+RESULT: PASS
+
+TEST: Kwame Attempts Alice Session
+-----------------------------------------------------------------
+SESSION ID: SESSION-ALICE-001
+AUTHENTICATED USER: kwame
+REQUESTED USER: kwame
+ALLOWED: False
+RESPONSE CONTEXT: None
+REASON: Session is already bound to another user
+RESULT: PASS
+
+TEST: Alice Requests Kwame Context
+-----------------------------------------------------------------
+SESSION ID: SESSION-ALICE-001
+AUTHENTICATED USER: alice
+REQUESTED USER: kwame
+ALLOWED: False
+RESPONSE CONTEXT: None
+REASON: Requested user does not match authenticated user
+RESULT: PASS
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 4
+FAILED: 0
+ERRORS: 0
+TOTAL: 4

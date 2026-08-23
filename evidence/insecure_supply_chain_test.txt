@@ -1,0 +1,35 @@
+=================================================================
+INSECURE AI SUPPLY-CHAIN TEST
+=================================================================
+
+TEST: Approved Model from Trusted Repository
+-----------------------------------------------------------------
+ARTIFACT: Qwen/Qwen2.5-1.5B-Instruct-GGUF
+APPROVED SOURCE: True
+HASH VERIFIED: False
+LOADED: True
+RESULT: PASS
+
+TEST: Unapproved Model from Unverified Source
+-----------------------------------------------------------------
+ARTIFACT: unknown-model.gguf
+APPROVED SOURCE: False
+HASH VERIFIED: False
+LOADED: True
+RESULT: FAIL - artifact was accepted without required supply-chain assurance
+
+TEST: Approved Model Without Integrity Verification
+-----------------------------------------------------------------
+ARTIFACT: Qwen/Qwen2.5-1.5B-Instruct-GGUF
+APPROVED SOURCE: True
+HASH VERIFIED: False
+LOADED: True
+RESULT: PASS
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 2
+FAILED: 1
+ERRORS: 0
+TOTAL: 3

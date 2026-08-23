@@ -1,0 +1,41 @@
+=================================================================
+SECURE AI INCIDENT RESPONSE TEST
+=================================================================
+
+TEST: High-Risk Prompt Injection
+-----------------------------------------------------------------
+EVENT: {'event_id': 'EVT-001', 'event_type': 'PROMPT_INJECTION', 'risk_level': 'HIGH', 'details': 'User attempted to override AI restrictions.'}
+INCIDENT CREATED: True
+CONTAINED: True
+ESCALATED: True
+EVIDENCE PRESERVED: True
+STATUS: Incident opened and security response initiated
+RESULT: PASS
+
+TEST: High-Risk Cross-Customer Access
+-----------------------------------------------------------------
+EVENT: {'event_id': 'EVT-002', 'event_type': 'CROSS_CUSTOMER_ACCESS', 'risk_level': 'HIGH', 'details': "User attempted to access another customer's information."}
+INCIDENT CREATED: True
+CONTAINED: True
+ESCALATED: True
+EVIDENCE PRESERVED: True
+STATUS: Incident opened and security response initiated
+RESULT: PASS
+
+TEST: Normal Authorized Query
+-----------------------------------------------------------------
+EVENT: {'event_id': 'EVT-003', 'event_type': 'NORMAL_QUERY', 'risk_level': 'LOW', 'details': 'Authorized balance inquiry.'}
+INCIDENT CREATED: False
+CONTAINED: False
+ESCALATED: False
+EVIDENCE PRESERVED: False
+STATUS: No incident required
+RESULT: PASS
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 3
+FAILED: 0
+ERRORS: 0
+TOTAL: 3

@@ -1,0 +1,127 @@
+
+=======================================================
+CONTROL ASSESSMENT
+=======================================================
+
+CONTROL ID:
+AI-SUPPLY-001
+
+CONTROL NAME:
+AI Model and Software Supply-Chain Assurance
+
+CONTROL TYPE:
+Preventive / Governance / Technical
+
+RISK ADDRESSED:
+AI-RISK-011 - Unmanaged Third-Party AI and Software Supply-Chain Risk
+
+CONTROL OBJECTIVE:
+Ensure AI model and software artifacts are loaded only when
+their approval status, source provenance, and integrity have
+been validated.
+
+IMPLEMENTATION:
+The application maintains an approved-artifact registry.
+
+Before loading an artifact, the control:
+
+1. Verifies that the artifact is approved.
+2. Verifies that the source matches the approved source.
+3. Calculates the artifact SHA-256 hash.
+4. Compares the calculated hash with the expected approved hash.
+5. Blocks artifacts that fail approval, provenance, or integrity checks.
+
+-------------------------------------------------------
+TEST EVIDENCE
+-------------------------------------------------------
+
+Insecure Baseline:
+evidence/insecure_supply_chain_test.txt
+
+Secure Evidence:
+evidence/secure_supply_chain_test.txt
+
+Insecure Test Result:
+1 Passed / 2 Failed / 0 Errors
+
+Secure Test Result:
+3 Passed / 0 Failed / 0 Errors
+
+TESTED SCENARIOS:
+
+1. Approved Model from Trusted Repository
+   Result: ALLOWED
+
+2. Unapproved Model from Unverified Source
+   Result: BLOCKED
+
+3. Tampered Approved Model
+   Result: BLOCKED
+
+-------------------------------------------------------
+CONTROL EFFECTIVENESS
+-------------------------------------------------------
+
+EFFECTIVE FOR TESTED SCENARIOS
+
+The implemented control allowed the defined approved artifact
+from the trusted source when integrity verification succeeded
+and blocked the tested unapproved and tampered artifacts.
+
+-------------------------------------------------------
+LIMITATIONS
+-------------------------------------------------------
+
+1. The approved-artifact registry is local and simplified.
+
+2. Repository identity is represented by a logical source value
+   rather than cryptographically authenticated provenance.
+
+3. Artifact signatures are not verified.
+
+4. Software dependency packages are not recursively assessed.
+
+5. Software bill of materials generation and validation are not
+   implemented.
+
+6. Known-vulnerability checking is not integrated.
+
+7. License and legal-risk validation are not implemented.
+
+8. Model-card and provenance documentation are not independently
+   verified.
+
+9. Continuous monitoring for upstream artifact compromise is not
+   implemented.
+
+10. Third-party supplier due diligence and contractual controls
+    are outside the current technical test scope.
+
+-------------------------------------------------------
+RESIDUAL RISK
+-------------------------------------------------------
+
+Residual risk remains because source allowlisting and hash
+verification provide only part of a production supply-chain
+assurance lifecycle.
+
+Production deployment would require digital-signature
+verification, authenticated repositories, dependency and
+vulnerability analysis, SBOM controls, supplier due diligence,
+license review, provenance documentation, continuous monitoring,
+and formal third-party risk management.
+
+-------------------------------------------------------
+ASSESSOR CONCLUSION
+-------------------------------------------------------
+
+AI-SUPPLY-001 is EFFECTIVE FOR TESTED SCENARIOS.
+
+The evidence demonstrates that the application accepted the
+defined approved artifact only when provenance and integrity
+requirements were satisfied and rejected the tested unapproved
+and tampered artifacts.
+
+This assessment does not constitute production approval.
+
+=======================================================

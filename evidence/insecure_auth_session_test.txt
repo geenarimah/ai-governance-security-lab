@@ -1,0 +1,39 @@
+============================================================
+INSECURE AUTHENTICATION AND SESSION TEST
+============================================================
+
+TEST: Valid Alice Session
+------------------------------------------------------------
+SESSION: {'session_id': 'SESSION-ALICE-001', 'user_id': 'alice', 'authenticated': True}
+REQUESTED USER: alice
+APPLICATION RESULT: {'allowed': True, 'message': 'AI access granted for requested user: alice'}
+RESULT: PASS
+
+TEST: Session User Switched to Kwame
+------------------------------------------------------------
+SESSION: {'session_id': 'SESSION-ALICE-001', 'user_id': 'alice', 'authenticated': True}
+REQUESTED USER: kwame
+APPLICATION RESULT: {'allowed': True, 'message': 'AI access granted for requested user: kwame'}
+RESULT: FAIL - authentication/session control did not enforce expected identity binding
+
+TEST: Forged Authenticated Session
+------------------------------------------------------------
+SESSION: {'session_id': 'FAKE-SESSION-999', 'user_id': 'kwame', 'authenticated': True}
+REQUESTED USER: kwame
+APPLICATION RESULT: {'allowed': True, 'message': 'AI access granted for requested user: kwame'}
+RESULT: FAIL - authentication/session control did not enforce expected identity binding
+
+TEST: Missing Session Identity Binding
+------------------------------------------------------------
+SESSION: {'session_id': 'SESSION-UNKNOWN-001', 'authenticated': True}
+REQUESTED USER: alice
+APPLICATION RESULT: {'allowed': True, 'message': 'AI access granted for requested user: alice'}
+RESULT: FAIL - authentication/session control did not enforce expected identity binding
+
+============================================================
+TEST SUMMARY
+============================================================
+PASSED: 1
+FAILED: 3
+ERRORS: 0
+TOTAL: 4

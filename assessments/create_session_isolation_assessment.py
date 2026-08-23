@@ -1,0 +1,139 @@
+assessment = """
+=======================================================
+CONTROL ASSESSMENT
+=======================================================
+
+CONTROL ID:
+AI-SESSION-001
+
+CONTROL NAME:
+Multi-User Session and Context Isolation
+
+CONTROL TYPE:
+Preventive / Technical
+
+RISK ADDRESSED:
+AI-RISK-009 - Cross-User Session or Context Leakage
+
+CONTROL OBJECTIVE:
+Ensure each authenticated user receives only session context
+bound to that user's identity and prevent cross-user session
+reuse or context crossover.
+
+IMPLEMENTATION:
+The application maintains session context in a session store
+indexed by session ID.
+
+Each session is bound to an authenticated user.
+
+The control:
+
+1. Creates isolated context for each session.
+2. Validates that requested user matches authenticated user.
+3. Prevents a session ID from being reused by another user.
+4. Prevents cross-user context requests.
+5. Returns no protected context when isolation checks fail.
+
+-------------------------------------------------------
+TEST EVIDENCE
+-------------------------------------------------------
+
+Insecure Baseline:
+evidence/insecure_session_isolation_test.txt
+
+Secure Evidence:
+evidence/secure_session_isolation_test.txt
+
+Insecure Test Result:
+1 Passed / 1 Failed / 0 Errors
+
+Secure Test Result:
+4 Passed / 0 Failed / 0 Errors
+
+TESTED SCENARIOS:
+
+1. Alice Initial Session
+   Result: ALLOWED WITH ALICE CONTEXT
+
+2. Kwame Separate Session
+   Result: ALLOWED WITH KWAME CONTEXT
+
+3. Kwame Attempts Alice Session
+   Result: BLOCKED
+
+4. Alice Requests Kwame Context
+   Result: BLOCKED
+
+-------------------------------------------------------
+CONTROL EFFECTIVENESS
+-------------------------------------------------------
+
+EFFECTIVE FOR TESTED SCENARIOS
+
+The implemented control maintained separate context for the
+defined users and prevented the tested cross-user session and
+context-access conditions.
+
+-------------------------------------------------------
+LIMITATIONS
+-------------------------------------------------------
+
+1. The session store is local and simplified.
+
+2. Session identifiers are predefined rather than securely
+   generated.
+
+3. Session expiration and idle timeout are not implemented.
+
+4. Session revocation and logout are not implemented.
+
+5. Concurrent-session limits are not implemented.
+
+6. Distributed session storage and synchronization are not
+   tested.
+
+7. Session fixation and replay protections remain limited.
+
+8. Token confidentiality and transport protection are outside
+   the current test scope.
+
+9. Privilege changes during an active session are not tested.
+
+10. Production integration with IAM, SSO, and centralized
+    session-management services remains incomplete.
+
+-------------------------------------------------------
+RESIDUAL RISK
+-------------------------------------------------------
+
+Residual risk remains because the tested control demonstrates
+user-to-session binding and context isolation but does not
+implement a complete production session-management lifecycle.
+
+Production deployment would require secure session generation,
+expiration, revocation, replay protection, distributed session
+handling, privilege-change controls, transport protection, and
+production IAM integration.
+
+-------------------------------------------------------
+ASSESSOR CONCLUSION
+-------------------------------------------------------
+
+AI-SESSION-001 is EFFECTIVE FOR TESTED SCENARIOS.
+
+The evidence demonstrates that the application isolated the
+defined user contexts and rejected the tested cross-user session
+reuse and cross-user context access conditions.
+
+This assessment does not constitute production approval.
+
+=======================================================
+"""
+
+filename = "evidence/AI-SESSION-001_assessment.txt"
+
+with open(filename, "w") as file:
+    file.write(assessment)
+
+print(assessment)
+print(f"Assessment saved to: {filename}")

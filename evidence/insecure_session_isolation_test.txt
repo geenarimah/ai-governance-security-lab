@@ -1,0 +1,27 @@
+=================================================================
+INSECURE MULTI-USER SESSION ISOLATION TEST
+=================================================================
+
+TEST: Alice Initial Session
+-----------------------------------------------------------------
+SESSION ID: SESSION-ALICE-001
+AUTHENTICATED USER: alice
+REQUESTED USER: alice
+RESPONSE CONTEXT: {'name': 'Alice Mensah', 'balance': 'GHS 12,500'}
+RESULT: PASS
+
+TEST: Kwame New Session After Alice
+-----------------------------------------------------------------
+SESSION ID: SESSION-KWAME-001
+AUTHENTICATED USER: kwame
+REQUESTED USER: kwame
+RESPONSE CONTEXT: {'name': 'Alice Mensah', 'balance': 'GHS 12,500'}
+RESULT: FAIL - session context crossed user boundary
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 1
+FAILED: 1
+ERRORS: 0
+TOTAL: 2

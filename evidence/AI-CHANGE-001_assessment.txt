@@ -1,0 +1,133 @@
+
+=======================================================
+CONTROL ASSESSMENT
+=======================================================
+
+CONTROL ID:
+AI-CHANGE-001
+
+CONTROL NAME:
+AI Model and Configuration Change Management
+
+CONTROL TYPE:
+Preventive / Governance / Technical
+
+RISK ADDRESSED:
+AI-RISK-006 - Uncontrolled AI Model or Configuration Change
+
+CONTROL OBJECTIVE:
+Ensure material AI model, prompt, configuration, and
+security-control changes are reviewed, approved, validated,
+versioned, and controlled before implementation.
+
+IMPLEMENTATION:
+The application applies defined governance checks before
+accepting configuration changes.
+
+The control currently verifies:
+
+1. The change has been approved.
+2. Output-validation controls cannot be disabled through
+   the tested change path.
+3. Model replacements must use an approved model.
+4. Version numbers cannot be directly overridden.
+5. Approved changes receive a controlled version increment.
+
+-------------------------------------------------------
+TEST EVIDENCE
+-------------------------------------------------------
+
+Insecure Baseline:
+evidence/insecure_change_management_test.txt
+
+Secure Evidence:
+evidence/secure_change_management_test.txt
+
+Insecure Test Result:
+1 Passed / 3 Failed / 0 Errors
+
+Secure Test Result:
+5 Passed / 0 Failed / 0 Errors
+
+TESTED SCENARIOS:
+
+1. Approved Prompt Update
+   Result: ALLOWED
+
+2. Disable Output Validation
+   Result: BLOCKED
+
+3. Unauthorized Model Replacement
+   Result: BLOCKED
+
+4. Direct Version Override
+   Result: BLOCKED
+
+5. Unapproved Prompt Change
+   Result: BLOCKED
+
+-------------------------------------------------------
+CONTROL EFFECTIVENESS
+-------------------------------------------------------
+
+EFFECTIVE FOR TESTED SCENARIOS
+
+The implemented change-management logic prevented the tested
+unapproved and security-degrading changes while permitting
+the defined approved prompt update.
+
+-------------------------------------------------------
+LIMITATIONS
+-------------------------------------------------------
+
+1. Approval is represented by a simplified Boolean value.
+
+2. There is no production workflow for named approvers,
+   separation of duties, or approval evidence.
+
+3. Automated regression testing is not triggered before
+   deployment.
+
+4. Rollback execution has not been implemented or tested.
+
+5. Configuration integrity or digital signing is not
+   implemented.
+
+6. Model provenance and artifact-hash verification are not
+   implemented.
+
+7. Emergency-change procedures are not defined.
+
+8. Production CI/CD and deployment controls are outside
+   the current lab scope.
+
+9. Change records are not yet integrated with centralized
+   logging, ticketing, or incident-management systems.
+
+-------------------------------------------------------
+RESIDUAL RISK
+-------------------------------------------------------
+
+Residual risk remains because the current implementation
+demonstrates basic approval, validation, and version-control
+logic but does not implement a complete production change
+management lifecycle.
+
+Production deployment would require formal approval records,
+testing gates, separation of duties, rollback capability,
+model and configuration integrity verification, deployment
+controls, and auditable change history.
+
+-------------------------------------------------------
+ASSESSOR CONCLUSION
+-------------------------------------------------------
+
+AI-CHANGE-001 is EFFECTIVE FOR TESTED SCENARIOS.
+
+The test evidence demonstrates that the application rejected
+the tested unauthorized, unapproved, and security-degrading
+changes while allowing the defined approved change.
+
+This assessment does not constitute production approval.
+
+=======================================================

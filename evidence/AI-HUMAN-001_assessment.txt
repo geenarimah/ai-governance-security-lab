@@ -1,0 +1,134 @@
+
+=======================================================
+CONTROL ASSESSMENT
+=======================================================
+
+CONTROL ID:
+AI-HUMAN-001
+
+CONTROL NAME:
+Human Oversight and Escalation for Material AI Decisions
+
+CONTROL TYPE:
+Preventive / Governance / Technical
+
+RISK ADDRESSED:
+AI-RISK-007 - Insufficient Human Oversight of Material AI Decisions
+
+CONTROL OBJECTIVE:
+Ensure material AI-driven actions do not proceed without
+explicit human review and approval.
+
+IMPLEMENTATION:
+The application classifies defined actions as material or
+non-material before execution.
+
+Routine informational actions may proceed without additional
+human approval.
+
+Material actions are blocked unless explicit human approval
+is present.
+
+The tested material actions include:
+
+1. Account closure.
+2. Large transfer.
+3. Credential reset.
+
+-------------------------------------------------------
+TEST EVIDENCE
+-------------------------------------------------------
+
+Insecure Baseline:
+evidence/insecure_human_oversight_test.txt
+
+Secure Evidence:
+evidence/secure_human_oversight_test.txt
+
+Insecure Test Result:
+1 Passed / 3 Failed / 0 Errors
+
+Secure Test Result:
+5 Passed / 0 Failed / 0 Errors
+
+TESTED SCENARIOS:
+
+1. Routine Balance Lookup
+   Result: ALLOWED
+
+2. Account Closure Without Human Approval
+   Result: BLOCKED
+
+3. Large Transfer Without Human Approval
+   Result: BLOCKED
+
+4. Credential Reset Without Human Approval
+   Result: BLOCKED
+
+5. Large Transfer With Human Approval
+   Result: ALLOWED
+
+-------------------------------------------------------
+CONTROL EFFECTIVENESS
+-------------------------------------------------------
+
+EFFECTIVE FOR TESTED SCENARIOS
+
+The implemented control prevented the tested material actions
+from executing without human approval while allowing routine
+informational activity and an explicitly approved material
+action.
+
+-------------------------------------------------------
+LIMITATIONS
+-------------------------------------------------------
+
+1. Human approval is represented by a simplified Boolean value.
+
+2. Reviewer identity is not authenticated or recorded.
+
+3. Separation of duties is not enforced.
+
+4. Approval reasons and supporting evidence are not recorded.
+
+5. Escalation thresholds are manually defined.
+
+6. Multi-level approval workflows are not implemented.
+
+7. Approval expiration and revocation are not implemented.
+
+8. Emergency override procedures are not defined.
+
+9. Human-review actions are not yet integrated with centralized
+   logging, case management, or ticketing systems.
+
+10. The control does not assess the quality or correctness of
+    the human review itself.
+
+-------------------------------------------------------
+RESIDUAL RISK
+-------------------------------------------------------
+
+Residual risk remains because the current control demonstrates
+basic human-approval gating but does not implement a complete
+production oversight and escalation workflow.
+
+Production deployment would require authenticated reviewers,
+defined approval authority, separation of duties, documented
+review evidence, escalation procedures, audit logging, and
+approval lifecycle management.
+
+-------------------------------------------------------
+ASSESSOR CONCLUSION
+-------------------------------------------------------
+
+AI-HUMAN-001 is EFFECTIVE FOR TESTED SCENARIOS.
+
+The evidence demonstrates that the application blocked the
+defined material actions when human approval was absent and
+allowed execution when the defined approval requirement was
+satisfied.
+
+This assessment does not constitute production approval.
+
+=======================================================

@@ -1,0 +1,25 @@
+=================================================================
+INSECURE AI PRIVACY AND DATA GOVERNANCE TEST
+=================================================================
+
+TEST: Balance Inquiry
+-----------------------------------------------------------------
+PURPOSE: balance_inquiry
+PRIVACY CHECKED: False
+DATA SENT: {'name': 'Alice Mensah', 'account_type': 'Savings', 'balance': 'GHS 12,500', 'date_of_birth': '1987-04-15', 'phone_number': 'TEST-PHONE-001', 'home_address': 'TEST-ADDRESS-001, Accra', 'national_id': 'TEST-NATIONAL-ID-001'}
+RESULT: FAIL - unnecessary personal data was sent: ['date_of_birth', 'phone_number', 'home_address', 'national_id']
+
+TEST: Account Type Inquiry
+-----------------------------------------------------------------
+PURPOSE: account_type_inquiry
+PRIVACY CHECKED: False
+DATA SENT: {'name': 'Alice Mensah', 'account_type': 'Savings', 'balance': 'GHS 12,500', 'date_of_birth': '1987-04-15', 'phone_number': 'TEST-PHONE-001', 'home_address': 'TEST-ADDRESS-001, Accra', 'national_id': 'TEST-NATIONAL-ID-001'}
+RESULT: FAIL - unnecessary personal data was sent: ['date_of_birth', 'phone_number', 'home_address', 'national_id']
+
+=================================================================
+TEST SUMMARY
+=================================================================
+PASSED: 0
+FAILED: 2
+ERRORS: 0
+TOTAL: 2
