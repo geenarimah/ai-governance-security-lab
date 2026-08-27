@@ -1,0 +1,19 @@
+{
+  "manifest_version": "1.0",
+  "system_id": "AI-SYS-001",
+  "captured_at": "2026-08-27T02:47:43.517054+00:00",
+  "model": {
+    "name": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+    "deployment": "Local llama.cpp inference server",
+    "model_version": "Qwen2.5-1.5B"
+  },
+  "versions": {
+    "prompt_version": "1.0",
+    "test_data_version": "1.0",
+    "control_suite_version": "1.0"
+  },
+  "git_commit": "e4bf4b1fd0a88a281e7d8e79b2590c9e3b066346",
+  "git_working_tree": "UNCOMMITTED_CHANGES",
+  "change_reason": "Initial continuous-assurance baseline",
+  "production_status": "NOT_APPROVED_FOR_PRODUCTION"
+}
