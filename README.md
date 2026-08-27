@@ -194,3 +194,92 @@ AI_Control_Register.csv
 AI_Risk_Scoring_Methodology.txt
 AI-SYS-001_Use_Case_Risk_Assessment.txt
 AI_Governance_Lab_Final_Summary.txt
+---
+
+## Continuous Assurance and Production Gating
+
+The lab includes a continuous-assurance workflow that evaluates whether changes introduce control regressions before an AI system can pass an assurance gate.
+
+### Assurance Workflow
+
+```text
+Change / version state
+        ↓
+Automated control retest
+        ↓
+Evidence generation
+        ↓
+Baseline comparison
+        ↓
+Regression detection
+        ↓
+Defined control failure response
+        ↓
+Production gate decision
+        ↓
+Risk reassessment
+        ↓
+Remediation verification
+```
+
+The current assurance suite automatically retests 12 implemented controls across:
+
+- sensitive-data minimization
+- authorization
+- security logging
+- output validation
+- authentication and session assurance
+- change management
+- human oversight
+- incident response
+- session isolation
+- model risk
+- software and model supply-chain assurance
+- privacy and data governance
+
+### Controlled Regression Exercise
+
+A controlled regression was introduced into `AI-OUTPUT-001` by temporarily weakening the restricted-output validation logic.
+
+Baseline state:
+
+- 12 controls passed
+- 0 controls failed
+- assurance suite: PASS
+
+After the controlled change:
+
+- `AI-OUTPUT-001`: PASS → FAIL
+- 11 controls passed
+- 1 control failed
+- evidence comparison detected the regression
+- production assurance gate was automatically BLOCKED
+
+The control failure was mapped to `AI-RISK-004 — Unsafe or Sensitive AI Output Delivery`.
+
+Risk reassessment increased:
+
+- residual likelihood: 2 → 3
+- residual score: 10 → 15
+- risk status: `ESCALATED_PENDING_REMEDIATION`
+
+The secure output-validation control was then restored and retested.
+
+Recovery state:
+
+- 12 controls passed
+- 0 controls failed
+- 0 control errors
+- 0 regressions detected
+- assurance gate: PASS
+- remediation status: `REMEDIATION_VERIFIED`
+
+Passing the assurance gate does not constitute production authorization. The system remains `NOT_APPROVED_FOR_PRODUCTION` because broader production-readiness requirements and 
+formal risk acceptance remain outside the scope of this lab.
+
+### Continuous Assurance Command
+
+The full assurance workflow can be executed with:
+
+```bash
+python3 assurance/continuous_assurance.py
