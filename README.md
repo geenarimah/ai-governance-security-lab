@@ -1,6 +1,5 @@
 # AI Governance and Security Lab
 
-## Overview
 ## What This Demonstrates
 
 This project demonstrates practical AI governance and AI security assurance across the full control lifecycle:
