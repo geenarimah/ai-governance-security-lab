@@ -1,7 +1,58 @@
 # AI Governance and Security Lab
 
 ## Overview
+## What This Demonstrates
 
+This project demonstrates practical AI governance and AI security assurance across the full control lifecycle:
+
+- AI system inventory and use-case risk assessment
+- 5×5 inherent and residual risk scoring
+- preventive, detective, and governance control design
+- adversarial testing of AI security controls
+- evidence-based control effectiveness assessment
+- model, access, privacy, logging, output, session, supply-chain, and human-oversight controls
+- automated regression testing across 12 controls
+- baseline evidence comparison and control regression detection
+- production assurance gating
+- risk reassessment after control failure
+- remediation verification and recovery
+
+The emphasis is not on making an LLM appear safe through prompting alone. Controls are enforced at the application and governance layers, tested adversarially, and tied back
+to risks, evidence, and production decisions.
+
+## Assurance Architecture
+
+```text
+AI System / Use Case
+        ↓
+Risk Identification
+        ↓
+Control Design
+        ↓
+Technical Implementation
+        ↓
+Adversarial Testing
+        ↓
+Evidence Collection
+        ↓
+Control Effectiveness Assessment
+        ↓
+Residual Risk
+        ↓
+Production Decision
+        ↓
+Continuous Assurance
+        ↓
+Regression Detection
+        ↓
+Control Failure Response
+        ↓
+Risk Reassessment
+        ↓
+Remediation Verification
+```
+
+The lab therefore treats AI governance as an ongoing assurance process rather than a one-time documentation exercise.
 > **Synthetic Data Notice**
 >
 > All customer names, credentials, PINs, card numbers, identifiers,
